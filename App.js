@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import Home from './components/Home';
 import Account from './components/Account';
 import Settings from './components/Settings';
-import { appConfig } from './app.config';
+import { navigationConfig } from './navigation.config';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -19,13 +19,11 @@ const Stack = createStackNavigator();
 const linking = {
   config: {
     rootHome: {
-      path: 'home',
       screens: {
         home: 'home'
       }
     },
     rootAccount: {
-      path: 'account',
       screens: {
         account: 'account',
         settings: 'account/settings'
@@ -46,7 +44,7 @@ export default function App() {
 }
 
 const options = {
-  ...(!appConfig.nativeNavigation ? {headerShown: false} : null),
+  ...(!navigationConfig.native ? {headerShown: false} : null),
   headerStyle: {
     backgroundColor: '#3CB371'
   },

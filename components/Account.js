@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { Link } from '@react-navigation/native';
 
 import NavigationBar from './NavigationBar';
-import { appConfig } from '../app.config';
+import { navigationConfig } from '../navigation.config';
 
 export default function Account(props) {
   props.navigation.setOptions({
@@ -18,12 +18,11 @@ export default function Account(props) {
 
   return (
     <View style={styles.container}>
-      {!appConfig.nativeNavigation && <NavigationBar activeLink='account'></NavigationBar>}
+      {!navigationConfig.native && <NavigationBar activeLink='account'></NavigationBar>}
       <View style={styles.content}>
         <Text style={styles.title}>Account page</Text>
-        <Link style={styles.link} to='/account/settings?name=Max'>Go to Settings</Link>
-        <Link style={styles.link} to='/home'>Go to Home</Link>
-        <Button title='Go to Home' onPress={() => props.navigation.navigate('home')}></Button>
+        {!navigationConfig.native && <Link style={styles.link} to='/account/settings?name=Max'>Go to Settings</Link>}
+        <Button title='Go to Home' onPress={() => props.navigation.navigate('rootHome', {screen: 'home'})}></Button>
       </View>
     </View>
   );
