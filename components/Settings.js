@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default function Settings({navigation}) {
+export default function Settings(props) {
+  props.navigation.setOptions({title: 'Settings'});
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Settings page</Text>
-      <Button title='Go back' onPress={() => navigation.goBack()}></Button>
+      <Text style={styles.text}>Passed parameter: {props.route.params.name}</Text>
+      <Button title='Go back' onPress={() => props.navigation.goBack()}></Button>
     </View>
   );
 }
@@ -17,7 +20,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   title: {
-    marginBottom: 16,
-    fontSize: 20
+    fontSize: 20,
+    marginBottom: 16
+  },
+  text: {
+    marginBottom: 16
   }
 });

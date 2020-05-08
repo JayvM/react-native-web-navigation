@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import { Link } from '@react-navigation/native';
 
-export default function Account({navigation}) {
-  navigation.setOptions({
+export default function Account(props) {
+  props.navigation.setOptions({
+    title: 'Account',
     headerRight: () => (
-      <TouchableOpacity style={styles.headerButton} onPress={() => navigation.navigate('Settings')}>
+      <TouchableOpacity style={styles.headerButton} onPress={() => props.navigation.navigate('settings', {name: 'Max'})}>
         <Text style={styles.headerButtonText}>Go to settings</Text>
       </TouchableOpacity>
     ),
@@ -13,7 +15,8 @@ export default function Account({navigation}) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Account page</Text>
-      <Button title='Go back' onPress={() => navigation.goBack()}></Button>
+      <Link style={styles.link} to='/home'>Go to Home</Link>
+      <Button title='Go to Home' onPress={() => props.navigation.navigate('home')}></Button>
     </View>
   );
 }
@@ -34,5 +37,8 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 16,
     fontSize: 20
+  },
+  link: {
+    marginBottom: 16
   }
 });

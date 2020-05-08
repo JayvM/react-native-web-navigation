@@ -15,12 +15,20 @@ import Settings from './components/Settings';
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
+const linking = {
+  config: {
+    home: '/home',
+    account: '/account',
+    settings: 'settings'
+  }
+};
+
 export default function App() {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen}></Drawer.Screen>
-        <Drawer.Screen name="Account" component={AccountScreen}></Drawer.Screen>
+    <NavigationContainer linking={linking}>
+      <Drawer.Navigator>
+        <Drawer.Screen name="home" component={HomeRoot}></Drawer.Screen>
+        <Drawer.Screen name="account" component={AccountRoot}></Drawer.Screen>
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -31,6 +39,7 @@ const options = {
     backgroundColor: '#3CB371',
   },
   headerTintColor: '#333333'
+  //animationEnabled: true
 };
 
 const navigationOptions = ({navigation}) => ({
@@ -40,19 +49,19 @@ const navigationOptions = ({navigation}) => ({
   ...options
 });
 
-function HomeScreen() {
+function HomeRoot() {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name='Home' component={Home} options={navigationOptions}></Stack.Screen>
+    <Stack.Navigator>
+      <Stack.Screen name='main' component={Home} options={navigationOptions}></Stack.Screen>
     </Stack.Navigator>
   );
 }
 
-function AccountScreen() {
+function AccountRoot() {
   return (
-    <Stack.Navigator initialRouteName="Account">
-      <Stack.Screen name='Account' component={Account} options={navigationOptions}></Stack.Screen>
-      <Stack.Screen name='Settings' component={Settings} options={options}></Stack.Screen>
+    <Stack.Navigator>
+      <Stack.Screen name='main' component={Account} options={navigationOptions}></Stack.Screen>
+      <Stack.Screen name='settings' component={Settings} options={options}></Stack.Screen>
     </Stack.Navigator>
   );
 }
