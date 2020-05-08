@@ -18,8 +18,10 @@ const Stack = createStackNavigator();
 const linking = {
   config: {
     home: '/home',
+      rootHome: '/',
     account: '/account',
-    settings: 'settings'
+      rootAccount: '/',
+      settings: '/settings'
   }
 };
 
@@ -27,8 +29,8 @@ export default function App() {
   return (
     <NavigationContainer linking={linking}>
       <Drawer.Navigator>
-        <Drawer.Screen name="home" component={HomeRoot}></Drawer.Screen>
-        <Drawer.Screen name="account" component={AccountRoot}></Drawer.Screen>
+        <Drawer.Screen name="home" component={HomeStack}></Drawer.Screen>
+        <Drawer.Screen name="account" component={AccountStack}></Drawer.Screen>
       </Drawer.Navigator>
     </NavigationContainer>
   );
@@ -49,18 +51,18 @@ const navigationOptions = ({navigation}) => ({
   ...options
 });
 
-function HomeRoot() {
+function HomeStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='main' component={Home} options={navigationOptions}></Stack.Screen>
+      <Stack.Screen name='rootHome' component={Home} options={navigationOptions}></Stack.Screen>
     </Stack.Navigator>
   );
 }
 
-function AccountRoot() {
+function AccountStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='main' component={Account} options={navigationOptions}></Stack.Screen>
+      <Stack.Screen name='rootAccount' component={Account} options={navigationOptions}></Stack.Screen>
       <Stack.Screen name='settings' component={Settings} options={options}></Stack.Screen>
     </Stack.Navigator>
   );
