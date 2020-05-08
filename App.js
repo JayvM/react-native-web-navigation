@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Home from './components/Home';
 import Account from './components/Account';
+import Settings from './components/Settings';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -25,20 +26,24 @@ export default function App() {
   );
 }
 
-const options = ({navigation}) => ({
-  headerLeft: () => (
-    <Icon style={{marginLeft: 16}} color='#333333' size={24} name='bars' onPress={() => navigation.openDrawer()}></Icon>
-  ),
+const options = {
   headerStyle: {
     backgroundColor: '#3CB371',
   },
   headerTintColor: '#333333'
+};
+
+const navigationOptions = ({navigation}) => ({
+  headerLeft: () => (
+    <Icon style={{marginLeft: 16}} color='#333333' size={24} name='bars' onPress={() => navigation.openDrawer()}></Icon>
+  ),
+  ...options
 });
 
 function HomeScreen() {
   return (
     <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name='Home' component={Home} options={options}></Stack.Screen>
+      <Stack.Screen name='Home' component={Home} options={navigationOptions}></Stack.Screen>
     </Stack.Navigator>
   );
 }
@@ -46,7 +51,8 @@ function HomeScreen() {
 function AccountScreen() {
   return (
     <Stack.Navigator initialRouteName="Account">
-      <Stack.Screen name='Account' component={Account} options={options}></Stack.Screen>
+      <Stack.Screen name='Account' component={Account} options={navigationOptions}></Stack.Screen>
+      <Stack.Screen name='Settings' component={Settings} options={options}></Stack.Screen>
     </Stack.Navigator>
   );
 }

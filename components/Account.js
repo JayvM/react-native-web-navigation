@@ -1,7 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 
 export default function Account({navigation}) {
+  navigation.setOptions({
+    headerRight: () => (
+      <TouchableOpacity style={styles.headerButton} onPress={() => navigation.navigate('Settings')}>
+        <Text style={styles.headerButtonText}>Go to settings</Text>
+      </TouchableOpacity>
+    ),
+  });
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Account page</Text>
@@ -11,6 +19,13 @@ export default function Account({navigation}) {
 }
 
 const styles = StyleSheet.create({
+  headerButton: {
+    marginRight: 16
+  },
+  headerButtonText: {
+    fontSize: 18,
+    color: '#333333'
+  },
   container: {
     flex: 1,
     alignItems: 'center',
