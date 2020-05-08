@@ -1,3 +1,3 @@
-export const navigationConfig = {
+export const NavigationConfig = {
   native: true
 }

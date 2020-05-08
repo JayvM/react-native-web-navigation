@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import Home from './components/Home';
 import Account from './components/Account';
 import Settings from './components/Settings';
-import { navigationConfig } from './navigation.config';
+import { NavigationConfig } from './navigation.config';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -44,7 +44,7 @@ export default function App() {
 }
 
 const options = {
-  ...(!navigationConfig.native ? {headerShown: false} : null),
+  ...(!NavigationConfig.native ? {headerShown: false} : null),
   headerStyle: {
     backgroundColor: '#3CB371'
   },
