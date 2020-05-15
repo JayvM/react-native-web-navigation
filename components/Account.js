@@ -18,7 +18,7 @@ export default function Account(props) {
 
   return (
     <View style={styles.container}>
-      {!NavigationConfig.native && <NavigationBar activeLink='account'></NavigationBar>}
+      {!NavigationConfig.native && <NavigationBar navigation={props.navigation} activeLink='account'></NavigationBar>}
       <View style={styles.content}>
         <Text style={styles.title}>Account page</Text>
         {!NavigationConfig.native && <Link style={styles.link} to='/account/settings?name=Max'>Go to Settings</Link>}

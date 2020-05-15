@@ -9,7 +9,7 @@ export default function Settings(props) {
 
   return (
     <View style={styles.container}>
-      {!NavigationConfig.native && <NavigationBar activeLink='settings'></NavigationBar>}
+      {!NavigationConfig.native && <NavigationBar navigation={props.navigation} activeLink='settings'></NavigationBar>}
       <View style={styles.content}>
         <Text style={styles.title}>Settings page</Text>
         <Text style={styles.text}>Passed parameter: {props.route.params.name}</Text>

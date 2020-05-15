@@ -9,7 +9,7 @@ export default function Home(props) {
 
   return (
     <View style={styles.container}>
-      {!NavigationConfig.native && <NavigationBar activeLink='home'></NavigationBar>}
+      {!NavigationConfig.native && <NavigationBar navigation={props.navigation} activeLink='home'></NavigationBar>}
       <View style={styles.content}>
         <Text style={styles.title}>Home page</Text>
         <Button title='Go to Account' onPress={() => props.navigation.navigate('rootAccount', {screen: 'account'})}></Button>
